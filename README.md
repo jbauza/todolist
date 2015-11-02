@@ -14,7 +14,18 @@ Se implementaron los siguientes endpoints:
 
 ## Instrucciones
 
+Para el correcto funcionamiento se deben instalar los requerimientos anteriores. Se utiliza una base de datos sqlite por defecto.
+
+Ejecutar el servidor de la siguiente forma:
+
+```
+python manage.py runserver 0.0.0.0:8000
+```
+Esto ejecuta el servidor que escucha las peticiones desde cualquier IP, a la IP del servidor ( no sólo localhost ) desde el puerto 8000 por defecto.
+
 # Funciones disponibles
+
+Para realizar las llamadas al servidor se recomienda hacerlas vía [Curl](http://curl.haxx.se/) o [Httpie](https://github.com/jkbrzt/httpie)
 
 
 
