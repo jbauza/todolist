@@ -25,7 +25,7 @@ Esto ejecuta el servidor que escucha las peticiones desde cualquier IP, a la IP 
 
 # Funciones disponibles
 
-Para realizar las llamadas al servidor se recomienda hacerlas vía [Curl](http://curl.haxx.se/) o [Httpie](https://github.com/jkbrzt/httpie)
+Para realizar las llamadas al servidor se recomienda hacerlas con [Curl](http://curl.haxx.se/) o [Httpie](https://github.com/jkbrzt/httpie)
 
 
 
