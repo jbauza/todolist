@@ -1,14 +1,14 @@
-#from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from todolist.models import Task
 from todolist.serializers import TaskSerializer, UserSerializer 
 
+#registra usuario y retorna el token correspondiente
 @api_view(['POST'])
+@permission_classes(())
 def register_user(request):
-
     if request.method == 'POST':
         serializer = UserSerializer(data=request.DATA)
         if serializer.is_valid():
@@ -18,8 +18,6 @@ def register_user(request):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','POST'])
-#@authentication_classes((SessionAuthentication, TokenAuthentication))
-#@permissions_classes((IsAuthenticated,))
 def todolist(request):
 
     if request.method == 'GET':
