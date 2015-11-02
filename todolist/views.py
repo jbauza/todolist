@@ -45,16 +45,17 @@ def resolve_task(request,name):
         
 
 @api_view(['GET','PUT','DELETE'])
-def tarea_detalle(request,pk):
+def task_details(request,pk):
 
     try:
         task = Task.objects.get(pk=pk)
     except Task.DoesNotExist:
         return Response(status=status.HTTP_400_BAD_REQUEST)
     if request.method == 'GET':
-        serializer = TaskSerializer(serializer.data)
+        serializer = TaskSerializer(task)
         return Response(serializer.data)
     if request.method == 'PUT':
+        serializer = TaskSerializer(task,data=request.DATA)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
