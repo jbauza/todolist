@@ -4,7 +4,18 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from todolist.models import Task
-from todolist.serializers import TaskSerializer 
+from todolist.serializers import TaskSerializer, UserSerializer 
+
+@api_view(['POST'])
+def register_user(request):
+
+    if request.method == 'POST':
+        serializer = UserSerializer(data=request.DATA)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.get_token(),status=status.HTTP_201_CREATED)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','POST'])
 #@authentication_classes((SessionAuthentication, TokenAuthentication))
