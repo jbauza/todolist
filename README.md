@@ -1,10 +1,13 @@
 # Todolist
+Una API para manejar una simple “TODO List”
+## Requerimientos
+Implementado utilizando:
+* [Django 1.8](https://www.djangoproject.com/)
+* [Django REST Framework 3.1](http://www.django-rest-framework.org/)
 
-## requerimientos
+## Objetivos
 
-## objetivos
-
-## instrucciones
+## Instrucciones
 
 # Funciones disponibles
 
