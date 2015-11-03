@@ -1,5 +1,6 @@
 # Todolist
-Una API para manejar una simple “TODO List”
+Una API para manejar una simple “TODO List”, es solo una lista de tareas compartida para todos los usuarios que se registren, en paticular aca solo se necesita 1 usuario.
+
 ## Requerimientos
 * [Django 1.8](https://www.djangoproject.com/)
 * [Django REST Framework 3.1](http://www.django-rest-framework.org/)
@@ -25,11 +26,11 @@ Esto ejecuta el servidor que escucha las peticiones desde cualquier IP, a la IP 
 
 # Funciones disponibles
 
-Para realizar las llamadas al servidor se recomienda hacerlas con [Curl](http://curl.haxx.se/) o [Httpie](https://github.com/jkbrzt/httpie)
+Para realizar las llamadas al servidor se recomienda hacerlas con [Curl](http://curl.haxx.se/) o [Httpie](https://github.com/jkbrzt/httpie).
 
 ## Registrar usuario
 
-Registra un nuevo usuario y retorna el token generado, que servira para realizar todas las transacciones posteriores. No necesita autorizacion y se debe enviar *username* y *password*
+Registra un nuevo usuario y retorna el token generado, que servira para realizar todas las transacciones posteriores. No necesita autorizacion y se debe enviar *username* y *password* via POST.
 
 ### Input
 ```
@@ -42,7 +43,7 @@ curl -H "Content-Type: application/json" -X POST -d '{"username":"<username>", "
 
 ## Pedir token de usuario
 
-Pide un token de un usuario ya registrado. No necesita autorizaci&oacute;n y se debe enviar *username* y *password*
+Pide un token de un usuario ya registrado. No necesita autorizaci&oacute;n y se debe enviar *username* y *password* via POST.
 ### Input
 ```
 curl -H "Content-Type: application/json" -X POST -d '{"username":"<username>", "password":"<password>"}' http://localhost:8000/todo/get_token/
@@ -54,7 +55,7 @@ curl -H "Content-Type: application/json" -X POST -d '{"username":"<username>", "
 
 ## Pedir lista de tareas
 
-Pide todas las tareas disponibles con sus estados correspondientes se debe enviar el *token* en el header, para pasar la autorizacion.
+Pide todas las tareas disponibles con sus estados correspondientes se debe enviar el *token* en el header, para pasar la autorizacion via GET.
 
 ### Input
 ```
@@ -70,7 +71,7 @@ curl -H 'Authorization: Token <token>' -X GET http://localhost:8000/todo/todolis
 ```
 
 ## Agregar tarea
-Agrega una nueva tarea a la todolist. Se debe enviar token en header y el *name* de la nueva tarea vía POST
+Agrega una nueva tarea a la todolist. Se debe enviar token en header y el *name* de la nueva tarea via POST.
 ### Input
 ```
 curl -H "Content-Type: application/json" -H 'Authorization: Token <token>' -X POST -d '{"name":"<task_name>"}' http://localhost:8000/todo/add_task/
@@ -81,7 +82,7 @@ curl -H "Content-Type: application/json" -H 'Authorization: Token <token>' -X PO
 ```
 
 ## Resolver Tarea
-Resuelve una tarea y le cambia el status de *false* a *true*. Se debe enviar el *task_name* al final de la url vía POST
+Resuelve una tarea y le cambia el status de *false* a *true*. Se debe enviar el *task_name* al final de la url via POST.
 ### Input
 ```
 curl -H "Content-Type: application/json" -H 'Authorization: Token <token>' -X POST http://localhost:8000/todo/resolve_task/<task_name>
