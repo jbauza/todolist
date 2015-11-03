@@ -10,7 +10,7 @@ Se implementaron los siguientes endpoints:
 * Agregar tareas al TODO list.
 * Marcar una tarea como resuelta.
 * Obtener lista de tareas con su estado actual.
-* Autenticaci&oacute;n manejada con [TokenAuthentication](http://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication)
+* Autenticacion manejada con [TokenAuthentication](http://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication)
 
 ## Instrucciones
 
@@ -29,11 +29,20 @@ Para realizar las llamadas al servidor se recomienda hacerlas con [Curl](http://
 
 ## Registrar usuario
 
-No necesita autorizaci&oacute;n y se debe enviar **username** y **password**
+Registra un nuevo usuario y retorna el token generado, que servira para realizar todas las transacciones posteriores. No necesita autorizacion y se debe enviar **username** y **password**
+
+### Input
+```
+curl -H "Content-Type: application/json" -X POST -d '{"username":"<username>", "password":"<password>"}' http://localhost:8000/todo/register_user/
+```
+### Output
+```
+{"<token>"}
+```
 
 ## Pedir token de usuario
 
-No necesita autorizaci&oacute;n y se debe enviar **username** y **password**
+Pide un token de un usuario ya registrado. No necesita autorizaci&oacute;n y se debe enviar **username** y **password**
 ### Input
 ```
 curl -H "Content-Type: application/json" -X POST -d '{"username":"<username>", "password":"<password>"}' http://localhost:8000/todo/get_token/
@@ -44,8 +53,20 @@ curl -H "Content-Type: application/json" -X POST -d '{"username":"<username>", "
 ```
 
 ## Pedir lista de tareas
+
+Pide todas las tareas disponibles con sus estados correspondientes se debe enviar el **token** en el header, para pasar la autorizacion.
+
+### Input
 ```
 curl -H 'Authorization: Token <token>' -X GET http://localhost:8000/todo/todolist/
+```
+### Output
+```
+ [
+ {"name":"tareita","status":false},
+ {"name":"tarea2","status":true"},
+ {"name":"nueva_tarea","status":true}
+ ]
 ```
 
 ## Agregar tarea
