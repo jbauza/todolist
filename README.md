@@ -29,9 +29,18 @@ Para realizar las llamadas al servidor se recomienda hacerlas con [Curl](http://
 
 ## Registrar usuario
 
+No necesita autorizaci&oacute;n y se debe enviar **username** y **password**
+
 ## Pedir token de usuario
+
+No necesita autorizaci&oacute;n y se debe enviar **username** y **password**
+### Input
 ```
-curl -H "Content-Type: application/json" -X POST -d '{"username":<username>, "password":<password>}' http://localhost:8000/todo/get_token/
+curl -H "Content-Type: application/json" -X POST -d '{"username":"<username>", "password":"<password>"}' http://localhost:8000/todo/get_token/
+```
+### Output
+```
+{"token":"<token>"}
 ```
 
 ## Pedir lista de tareas
