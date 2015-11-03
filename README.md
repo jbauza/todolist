@@ -27,11 +27,21 @@ Esto ejecuta el servidor que escucha las peticiones desde cualquier IP, a la IP 
 
 Para realizar las llamadas al servidor se recomienda hacerlas con [Curl](http://curl.haxx.se/) o [Httpie](https://github.com/jkbrzt/httpie)
 
+## Registrar usuario
 
+## Pedir token de usuario
+```
+curl -H "Content-Type: application/json" -X POST -d '{"username":<username>, "password":<password>}' http://localhost:8000/todo/get_token/
+```
 
-#pedir token de usuario en particular
- curl -H "Content-Type: application/json" -X POST -d '{"username":<username>, "password":<password>}' http://localhost:8000/todo/get_token/
-
-#pedir lista de tareas
+## Pedir lista de tareas
+```
 curl -H 'Authorization: Token <token>' -X GET http://localhost:8000/todo/todolist/
+```
+
+## Agregar tarea
+
+## Resolver Tarea
+
+## Detalle Tarea ( obtener, actualizar, borrar )
 
